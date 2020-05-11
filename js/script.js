@@ -3,8 +3,8 @@ var grid = document.getElementById("gameGrid")
 var flag = false
 
 function generateGame() {
-    console.log("click")
-    // create game
+    flag = false;
+    $("#flag-text").text("clicking will reveal the grid")
     grid.innerHTML = "";
     for (var i = 0; i < 15; i++) {
         row = grid.insertRow(i);
@@ -48,9 +48,18 @@ function mineCounter(lat, long) {
 
 // click function, if its not a mine, uncover
 function clickCell(cell) {
-    if (flag === true) {
-        cell.classList.add("blue");
-        flag === false
+    if (flag) {
+        let replace = false
+        for (var i = 0; i < cell.classList.length; i++) {
+            if (cell.classList[i] === "blue") {
+                replace = true
+            }
+        }
+        if (replace === true) {
+            cell.classList.remove("blue")
+        } else {
+            cell.classList.add("blue")
+        }
     } else {
         if (cell.getAttribute("mine") === "true") {
             gameOver()
@@ -58,6 +67,7 @@ function clickCell(cell) {
             reveal(cell.getAttribute("row"), cell.getAttribute("cell"))
         }
     }
+    victoryCondition()
 }
 
 function reveal(lat, long) {
@@ -91,9 +101,32 @@ function gameOver() {
         for (var j = 0; j < 15; j++) {
             cell = grid.rows[i].cells[j]
             if (cell.getAttribute("mine") === "true") {
+                if (cell.getAttribute("blue") !== undefined) { cell.classList.remove("blue") }
                 cell.classList.add("red")
             }
         }
+    }
+    $("#flag-text").text("Sorry, but you lost!, red squares are mines, and blue squares are incorrectly guessed flags")
+}
+
+function victoryCondition() {
+    // search through the entire grid and find the mines
+    let victory = true
+    for (var i = 0; i < 15; i++) {
+        for (var j = 0; j < 15; j++) {
+            cell = grid.rows[i].cells[j]
+            // if the mine isnt blue turn victory condition false
+            if (cell.getAttribute("mine") === "true") {
+                let blue = false
+                for (var t = 0; t < cell.classList.length; t++) {
+                    if (cell.classList[t] === "blue") { blue = true }
+                }
+                if (!blue) { victory = false }
+            }
+        }
+    }
+    if (victory) {
+        $("#flag-text").text("Well done! you won")
     }
 }
 
@@ -104,7 +137,9 @@ $("#start").on("click", function () {
 $("#flag").on("click", function () {
     if (flag === true) {
         flag = false
+        $("#flag-text").text("clicking will reveal the grid")
     } else {
         flag = true
+        $("#flag-text").text("clicking will flag potential mines")
     }
 })

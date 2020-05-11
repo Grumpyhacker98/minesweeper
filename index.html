@@ -16,17 +16,22 @@
     <header>
         <button id="start">Create Game</button>
         <button id="flag">Flag a mine</button>
+        <p id="flag-text">clicking will reveal the grid</p>
     </header>
 
     <main class="container border">
-        <table id="gameGrid">
+        <div class="row">
+            <div class="col">
+                <table id="gameGrid">
 
-        </table>
+                </table>
+            </div>
+        </div>
     </main>
 
     <footer class="mt-2">
         <p class="text-muted text-center p-3 m-0">Each grid tells how many mines are in the 8 adjacent slots</p>
-        <p class="text-muted text-center p-3 m-0">Click to uncover each grid, Left click to flag bomb-sites</p>
+        <p class="text-muted text-center p-3 m-0">Reveal the map and flag all the bombs to win</p>
         <p class="text-muted text-center p-3 m-0">Dont click the bombs!</p>
     </footer>
 
