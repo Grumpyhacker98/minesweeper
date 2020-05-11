@@ -8,29 +8,33 @@
     <!-- css -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
     <header>
-
+        <button id="start">Create Game</button>
     </header>
 
-    <main class="container">
+    <main class="container border">
+        <table id="gameGrid">
 
+        </table>
     </main>
 
     <footer class="mt-2">
-        <p class="text-muted text-center p-3 m-0">Left click to dig up a plot, if a plot has a number it 
-            indicats how many mines are in the 8 adjacent plots! Right click to flag bomb sites and win by uncovering the entire map, you lose if you set off a bomb</p>
+        <p class="text-muted text-center p-3 m-0">Each grid tells how many mines are in the 8 adjacent slots</p>
+        <p class="text-muted text-center p-3 m-0">Click to uncover each grid, Left click to flag bomb-sites</p>
+        <p class="text-muted text-center p-3 m-0">Dont click the bombs!</p>
     </footer>
 
 
 
     <!-- jquery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
     <!--bootstrap popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
@@ -40,4 +44,5 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
