@@ -2,8 +2,11 @@ var grid = document.getElementById("gameGrid")
 
 var flag = false
 
+var mineArray = []
+
 function generateGame() {
     flag = false;
+    mineArray = []
     $("#flag-text").text("clicking will reveal the grid")
     grid.innerHTML = "";
     for (var i = 0; i < 15; i++) {
@@ -22,11 +25,13 @@ function generateGame() {
         let lat = Math.floor(Math.random() * 15)
         let long = Math.floor(Math.random() * 15)
         cell = grid.rows[lat].cells[long]
-        if (cell.getAttribute("mine") !== true) {
-            cell.setAttribute("mine", true)
-            addAdjacent(lat, long)
-        }
+        console.log(cell.getAttribute("mine"))
+        if (cell.getAttribute("mine") === "true") { continue }
+        cell.setAttribute("mine", true)
+        addAdjacent(lat, long)
+        mineArray.push({ lat, long })
     }
+    console.log(mineArray)
 }
 
 // when a mine is created it calls all 8 nearby grids
