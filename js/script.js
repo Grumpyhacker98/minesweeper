@@ -22,8 +22,10 @@ function generateGame() {
         let lat = Math.floor(Math.random() * 15)
         let long = Math.floor(Math.random() * 15)
         cell = grid.rows[lat].cells[long]
-        cell.setAttribute("mine", true)
-        addAdjacent(lat, long)
+        if (cell.getAttribute("mine") === false) {
+            cell.setAttribute("mine", true)
+            addAdjacent(lat, long)
+        }
     }
 }
 
