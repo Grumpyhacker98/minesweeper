@@ -4,3 +4,5 @@ function gameGrid(difficulty){
 }
 
 module.exports = gameGrid
+
+// useless, want to put in difficulty later and might usilize constructors though
